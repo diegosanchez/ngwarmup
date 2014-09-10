@@ -4,32 +4,37 @@
   <meta charset="UTF-8">
   <title></title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="/css/bootstrap.css" />
   <link rel="stylesheet" href="/css/contacts.css" />
 </head>
-<body ng-app="contacts">
-  <h3>Contact application</h3>
+<body ng-app="App">
   <div class="container" ng-controller="contactCtrl">
     <div class="row">
-      <div class="col-sm-8 col-sm-offset-2">
-        <form role="form">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" type="email" class="form-group" name="email" placeholder="enter your email"/>
-          </div>
+      <div class="col-sm-6">
+        <span><h3>Contact application</h3></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <form role="form" class="shade" name="newEntry">
           <div class="form-group">
             <label for="name">Name:</label>
-            <input id="name" type="name" class="form-group" name="text" placeholder="what's your name"/>
+            <input id="name" class="form-control" name="name" ng-model="newContact.name" required/>
           </div>
           <div class="form-group">
-            <input type="submit" class="btn btn-default" ng-click="saveContact()"/>
+            <label for="email">Email:</label>
+            <input id="email" type="email" class="form-control" name="mail" ng-model="newContact.mail"  />
+          </div>
+          <input type="hidden" name="id" ng-model="newContact.id"/>
+          <div class="form-group">
+            <input type="submit" class="btn btn-primary form-control {{disable()}}" ng-click="saveContact()"/>
           </div>
         </form>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-sm-10">
+      <div class="col-sm-6">
         <table class="table table-condensed"<tr>
           <thead class="strong">
             <tr>
@@ -39,10 +44,13 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>diego</td>
-              <td>d@test.com</td>
-              <td></td>
+            <tr ng-repeat="c in contacts()" >
+              <td>{{c.name}}</td>
+              <td>{{c.mail}}</td>
+              <td>
+                <a href="#" class="glyphicon glyphicon-remove" ng-click="deleteContact(c.id)"></a>
+                <a href="#" class="glyphicon glyphicon-edit" ng-click="editContact(c.id)">
+              </td>
             </tr>
           </tbody>
         </table>
