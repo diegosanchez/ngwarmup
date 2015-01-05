@@ -6,51 +6,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="/css/contacts.css" />
+  <script src="/js/person.js"></script>
+  <script>
+    function callback(event) {
+      console.log(event.type);
+      console.log(event.target);
+      console.log(event.target.class);
+      console.log(event.target.onclick);
+      console.log(event.target.name);
+    }
+  </script>
 </head>
-<body ng-app="contacts">
-  <h3>Contact application</h3>
-  <div class="container" ng-controller="contactCtrl">
-    <div class="row">
-      <div class="col-sm-8 col-sm-offset-2">
-        <form role="form">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input id="email" type="email" class="form-group" name="email" placeholder="enter your email"/>
-          </div>
-          <div class="form-group">
-            <label for="name">Name:</label>
-            <input id="name" type="name" class="form-group" name="text" placeholder="what's your name"/>
-          </div>
-          <div class="form-group">
-            <input type="submit" class="btn btn-default" ng-click="saveContact()"/>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-10">
-        <table class="table table-condensed"<tr>
-          <thead class="strong">
-            <tr>
-              <td >Name</td>
-              <td>Email</td>
-              <td>Actions</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>diego</td>
-              <td>d@test.com</td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <script src="/angular/angular.js"></script>
-  <script src="/angular/angular-route.js"></script>
-  <script src="/js/contacts.js"></script>
+<body>
+  <button name="yo" type="button">Click</button>
 </body>
 </html>
